@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Khung video ở giữa (màu xám) -->
+    <FrameLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#808080"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <!-- Vòng tròn loading ở giữa (placeholder) -->
+        <ProgressBar
+            android:id="@+id/progressLoading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <!-- 1. Ảnh tài khoản đang đăng nhập ở góc trên bên phải -->
+    <ImageView
+        android:id="@+id/imgCurrentUserAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:background="@drawable/bg_circle_white"
+        android:padding="4dp"
+        android:contentDescription="Current user avatar"
+        app:layout_constraintTop_toTopOf="@id/videoContainer"
+        app:layout_constraintEnd_toEndOf="@id/videoContainer"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <!-- 3. Ảnh + Email tài khoản đăng video ở góc dưới bên trái -->
+    <LinearLayout
+        android:id="@+id/layoutUploaderInfo"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/videoContainer"
+        app:layout_constraintStart_toStartOf="@id/videoContainer"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/imgUploaderAvatar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            android:background="@drawable/bg_circle_white"
+            android:padding="2dp"
+            android:contentDescription="Uploader avatar" />
+
+        <TextView
+            android:id="@+id/tvUploaderEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Tiêu đề video -->
+    <TextView
+        android:id="@+id/tvVideoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video Shorts"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/videoContainer"
+        app:layout_constraintBottom_toBottomOf="@id/videoContainer"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Mô tả ngắn video -->
+    <TextView
+        android:id="@+id/tvVideoDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video Shorts"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/videoContainer"
+        app:layout_constraintBottom_toTopOf="@id/tvVideoTitle"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- 4. Cột icon like / dislike / share ở bên phải video -->
+    <LinearLayout
+        android:id="@+id/layoutActions"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/videoContainer"
+        app:layout_constraintBottom_toBottomOf="@id/videoContainer"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal">
+
+        <!-- Like -->
+        <ImageView
+            android:id="@+id/imgLike"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/btn_star_big_on"
+            android:contentDescription="Like" />
+
+        <TextView
+            android:id="@+id/tvLikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Dislike -->
+        <ImageView
+            android:id="@+id/imgDislike"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/btn_star_big_off"
+            android:contentDescription="Dislike" />
+
+        <TextView
+            android:id="@+id/tvDislikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Share -->
+        <ImageView
+            android:id="@+id/imgShare"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:contentDescription="Share"
+            android:layout_marginTop="4dp"/>
+
+        <!-- More (3 chấm) -->
+        <TextView
+            android:id="@+id/tvMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⋮"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- Nút upload + mở webview để đáp ứng yêu cầu bài tập -->
+    <LinearLayout
+        android:id="@+id/layoutBottomButtons"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="12dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnUploadVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Upload video" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnOpenWebview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mở WebView" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
